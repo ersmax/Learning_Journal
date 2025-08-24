@@ -22,4 +22,6 @@ class Entry(models.Model):
 
     def __str__(self):
         """Return a short string representing the entry"""
+        if len(self.text) < 80:
+            return self.text
         return f"{self.text[:80]}..."
