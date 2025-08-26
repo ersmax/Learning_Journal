@@ -15,7 +15,7 @@ class Entry(models.Model):
     """An entry for a topic"""
     topic = models.ForeignKey(Topic, on_delete = models.CASCADE)    # Topic is the foreign key; when a topic is deleted, all the entries associated with it should be deleted too.
     text = models.TextField()
-    date_added = models.DateTimeField                               # present entries in the order they are created
+    date_added = models.DateTimeField(auto_now_add=True)            # present entries in the order they are created
 
     class Meta:
         verbose_name_plural = 'entries'                             # without this attribute, Django would refer to multiple entries as Entrys
