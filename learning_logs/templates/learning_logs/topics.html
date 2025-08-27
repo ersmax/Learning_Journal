@@ -1,0 +1,14 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<p>Topics</p>
+<ul>
+  {% for topic in topics %}   {% comment %} key dictionary 'topics' in views.py {% endcomment %}
+    <li>{{topic.text}}</li>
+  {% empty %}
+    <li>No topics have been added yet.</li>  
+  {% endfor %}
+</ul>
+
+{% endblock content %}
