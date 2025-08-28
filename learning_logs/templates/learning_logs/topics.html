@@ -4,8 +4,10 @@
 
 <p>Topics</p>
 <ul>
-  {% for topic in topics %}   {% comment %} key dictionary 'topics' in views.py {% endcomment %}
-    <li>{{topic.text}}</li>
+  {% for topic in topics_key %}   {% comment %} key dictionary 'topics' in views.py {% endcomment %}
+    <li>
+      <a href="{% url 'learning_logs:topic' topic.id %}">{{topic.text}}</a>   {% comment%} topic.id retrives the ID of a topic {%endcomment%}
+    </li> 
   {% empty %}
     <li>No topics have been added yet.</li>  
   {% endfor %}

@@ -9,6 +9,7 @@ urlpatterns = [                 # list of individual pages that can be requested
                                         # views.index: specifies which function to call
                                         # name = 'index': provides the name index for this URL
     path('topics/', views.topics, name='topics'),
+    path('topics/<int:topic_id>', views.topic, name='topic'), # topic_id is a reference to topic.id 
                             
 ]
 
