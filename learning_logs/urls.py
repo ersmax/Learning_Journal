@@ -8,9 +8,14 @@ urlpatterns = [                 # list of individual pages that can be requested
     path('', views.index, name='index'),# '': base URL (http://localhost:8000). route the request to a view
                                         # views.index: specifies which function to call
                                         # name = 'index': provides the name index for this URL
+    # Page with list of topics
     path('topics/', views.topics, name='topics'),
+    # Page listing all entries of a topic
     path('topics/<int:topic_id>', views.topic, name='topic'), # topic_id is a reference to topic.id 
-                            
+    # Page for adding a new topic
+    path('new_topic/', views.new_topic, name='new_topic'),
+    
+                                
 ]
 
 
