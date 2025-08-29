@@ -35,7 +35,7 @@ def new_topic(request):
             return redirect('learning_logs:topics')
 
     # Display a blank or invalid form. Run only in these 2 circumstances
-    context = {'form': form}
+    context = {'form_key': form}
     return render(request, 'learning_logs/new_topic.html', context)
 
 

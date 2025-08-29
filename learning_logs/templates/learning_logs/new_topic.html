@@ -3,9 +3,9 @@
 {% block content %}
   <p>Add a new topic:</p>
   
-  <form action="{% url 'learning_logs:new_topic' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_div }}
+  <form action="{% url 'learning_logs:new_topic' %}" method='post'>     {% comment %} send data to the view function new_topic() {% endcomment %}
+    {% csrf_token %}        {% comment %} prevent unauthorized access to the server {% endcomment %}
+    {{ form_key.as_div }}   {% comment %} create all fields defined in forms.py. Render all form elements as HTML <div></div> for better display {% endcomment %}
     <button name="submit">Add topic</button>
   </form>
 
