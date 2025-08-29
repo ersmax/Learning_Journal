@@ -30,13 +30,13 @@ def new_topic(request):
     else:
         # POST data submitted; process data.
         form = TopicForm(data=request.POST)
-        if form.is_valid():
+        if form.is_valid(): # check all required fields have been filled in, text < 200 characters, etc
             form.save()
             return redirect('learning_logs:topics')
 
-    # Display a blank or invalid form
+    # Display a blank or invalid form. Run only in these 2 circumstances
     context = {'form': form}
-    return render(request, 'learning_logs/topics.html', context)
+    return render(request, 'learning_logs/new_topic.html', context)
 
 
 
