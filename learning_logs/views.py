@@ -38,7 +38,7 @@ def new_topic(request):
     context = {'form_key': form}
     return render(request, 'learning_logs/new_topic.html', context)
 
-def new_entry(request, topic_id):
+def new_entry(request, topic_id):   # store the topic_id from the URL request
     """Add a new entry for a particular topic"""
     topic = Topic.objects.get(id=topic_id)
 
@@ -47,12 +47,12 @@ def new_entry(request, topic_id):
         form = EntryForm()
     else:
         # POST data submitted; process data
-        form = EntryForm(data=request.POST)
-        if form.is_valid(): # check all required fields have been filled
-            new_entry = form.save(commit = False)
+        form = EntryForm(data=request.POST)  # make an instance populated with POST data from the request object
+        if form.is_valid():                  # check all required fields have been filled
+            new_entry = form.save(commit = False)  # do not save to db yet, but wait to add topic
             new_entry.topic = topic
-            new_entry.save()
-            return redirect('learning_logs:topic', topic_id = topic_id)
+            new_entry.save()                 # save entry to db
+            return redirect('learning_logs:topic', topic_id = topic_id) # redirect to the view of all entries of the topic
     
     # Display a blank or invalid form in case info is missing
     context = {'topic_key': topic, 'form_key': form}
