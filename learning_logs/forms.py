@@ -15,8 +15,5 @@ class EntryForm(forms.ModelForm):
         model = Entry           # based the class on Entry
         fields = ['text']       
         labels = {'text': ''}   # give a blank label to text
-        widgets = {'text':forms.Textarea(attrs={'cols':80})}
-
-
-
-
+        widgets = {'text':forms.Textarea(attrs={'cols':80})}    # override  the default multiline text area with width of 80 columns instead of 40
+        
