@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect   # import redirect(), to redirect user back to topics page after submitting the topic
-from .models import Topic      # import model associated with data we need
-from .forms import TopicForm, EntryForm   # import the form for topic and entry
+from .models import Topic,  Entry           # import model associated with data we need
+from .forms import TopicForm, EntryForm     # import the form for topic and entry
 
 
 # Create your views here.
@@ -57,6 +57,24 @@ def new_entry(request, topic_id):   # store the topic_id from the URL request
     # Display a blank or invalid form in case info is missing
     context = {'topic_key': topic, 'form_key': form}
     return render(request, 'learning_logs/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    """Edit an existing entry"""
+    entry = Entry.objects.get(id=entry_id)  # get the entry object that user wants to edit
+    topic = entry.topic                     # get the topic
+
+    if request.method != 'POST':
+        # Initial request: return pre-fill form with current entry'
+        form = EntryForm(instance=entry)    # create the form with the info of the pre-existing entry object
+    else:
+        # POST changed data submitted; process data
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()     # no need to add arguments, because entry is already associated with topic
+            return redirect('learning_logs:topic', topic_id = topic.id)
+
+    context = {'entry_key': entry, 'topic_key': topic, 'form_key': form}
+    return render(request, 'learning_logs/edit_entry.html', context)
 
 
 
