@@ -1,11 +1,23 @@
 <h1> 
   <a href="{% url 'learning_logs:index' %}">Learning Log</a> - 
   <a href="{% url 'learning_logs:topics' %}">Topics</a> - 
+  {% comment %} Login Form {% endcomment %}
   {% if user.is_authenticated %}
     Hello, {{ user.username }}.
   {% else %}
     <a href="{% url 'accounts:login' %}">Log in</a>
   {% endif %}
+  {% comment %} Logout Form {% endcomment %}
+  {% comment %} the logout req uses POST, else attackers can force logout with http://localhost:8001/accounts/logout {% endcomment %}
+  {% comment %} in case we used {% url 'accounts:logout' %} {% endcomment %}
+  {% if user.is_authenticated %}
+    <hr />  {% comment %} palce request at the bottom, below horizontal rule {% endcomment %}
+    <form action="" method = 'post'>
+      {% csrf_token %}  {% comment %} prevent unauthorized access to db {% endcomment %}
+      <button name='submit'>Logout</button>
+    </form>
+  {% endif %}
+  
 </h1>
 
 {% block content %}{% endblock content%}
