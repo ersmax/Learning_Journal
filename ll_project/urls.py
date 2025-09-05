@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('learning_logs.urls')),       # include the module learning_logs.urls
+    path('accounts/', include('accounts.urls')),    # Include the urls.py from app accounts. Accept any request from http://localhost:8000/accounts/...
+    path('', include('learning_logs.urls')),        # include the module learning_logs.urls
 ]
