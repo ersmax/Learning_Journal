@@ -6,7 +6,7 @@ from .forms import TopicForm, EntryForm     # import the form for topic and entr
 # Create your views here.
 def index(request):
     """The home page for Learning Log"""
-    return render(request, 'learning_logs/index.html')
+    return render(request, 'learning_logs/index.html')  # render the response based on data provided by views
 
 def topics(request):        # pass the URL request for the webpage
     """Show all available topics"""

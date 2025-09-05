@@ -1,6 +1,12 @@
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
+
+  <p>
+    <a href="{% url 'learning_logs:topics' %}">List of topics</a>
+  </p>
+
+
   <p>Add a new topic:</p>
   
   <form action="{% url 'learning_logs:new_topic' %}" method='post'>     {% comment %} send data to the view function new_topic() {% endcomment %}
