@@ -15,6 +15,6 @@ urlpatterns = [         # pages that can be reached from localhost/accounts
     # and login tells it to send requests to Django's login view
       
     path('', include('django.contrib.auth.urls')),  
-    
+
 ]
 

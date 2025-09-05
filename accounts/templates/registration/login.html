@@ -6,7 +6,7 @@
   <p>Username and password don't match. Try again.</p>
 {% endif %}
 
-<form action="{% url 'account:login' %}" method="post">   {% comment %} send data to the default login() function in views, so login() can process data. The login view sends a form object to the template, and we display the filled in data wit form.as_div {% endcomment %}
+<form action="{% url 'accounts:login' %}" method='post'>   {% comment %} send data to the default login() function in views, so login() can process data. The login view sends a form object to the template, and we display the filled in data wit form.as_div {% endcomment %}
   {% csrf_token %}      {% comment %} prevent unauthorized access to db {% endcomment %}
   {{ form.as_div }}
 
