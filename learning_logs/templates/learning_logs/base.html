@@ -11,8 +11,8 @@
   {% comment %} the logout req uses POST, else attackers can force logout with http://localhost:8001/accounts/logout {% endcomment %}
   {% comment %} in case we used {% url 'accounts:logout' %} {% endcomment %}
   {% if user.is_authenticated %}
-    <hr />  {% comment %} palce request at the bottom, below horizontal rule {% endcomment %}
-    <form action="" method = 'post'>
+    <hr />              {% comment %} place request at the bottom, below horizontal rule {% endcomment %}
+    <form action="{% url 'accounts:logout' %}" method = 'post'>
       {% csrf_token %}  {% comment %} prevent unauthorized access to db {% endcomment %}
       <button name='submit'>Logout</button>
     </form>

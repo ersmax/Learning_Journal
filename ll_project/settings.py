@@ -128,4 +128,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # My settings.
 LOGIN_REDIRECT_URL = 'learning_logs:index'  # Redirect to homepage upon successul login
+LOGOUT_REDIRECT_URL = 'learning_logs:index' # Redirect to homepage upon logout
 
